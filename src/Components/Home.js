@@ -91,7 +91,8 @@ const Home = () => {
     <img src={yellow} alt="" />
    
   </div>
-  <div className="last-text">
+  <div className="last-text"> 
+    {/* Last Heading */}
     <h1 className="last-heading">"Majesty in Every Pixel: The King with Yellow Eyes"</h1>
     <p className="last-text">"Discover the elegance of AI as it breathes life into a regal figure. The King with Yellow Eyes is more than just an image—it's a testament to the fusion of artistry and advanced technology. Let your imagination soar as you witness a creation that captures the essence of power, mystery, and innovation, all crafted from a simple prompt."</p>
     
