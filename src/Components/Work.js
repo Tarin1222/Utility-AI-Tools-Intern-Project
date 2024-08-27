@@ -1,44 +1,58 @@
-//Image editing
 import React from "react";
+import { Link } from "react-router-dom";
 import PresetFilterPacks from "../Assets/filter icon.png";
-import ProfessionalEditingTools from "../Assets/editing tools.png";
-import CustomizableTemplates from "../Assets/Customizable Templates.png";
+import backgroundChange from "../Assets/background_change.webp";
+import imageResize from "../Assets/imageResize.png";
 
-const Work = () => {                    //Image editing
+const Work = () => {
   const workInfoData = [
     {
       image: PresetFilterPacks,
       title: "Preset Filter Packs",
-      text: "Offer bundles of preset filters that users can apply to their photos with a single click. such as: AI Retouching , Background Removal and Batch Editing and more" ,
+      text: "Offer bundles of preset filters that users can apply to their photos with a single click. such as: AI Retouching , Background Removal and Batch Editing and more",
     },
     {
-      image: ProfessionalEditingTools,
-      title: "Professional Editing Tools",
-      text: "Provide access to advanced editing tools and features that users can purchase to enhance their editing capabilities",
+      image: backgroundChange,
+      title: "Change The Background",
+      text: "Effortlessly change the background of your image with our intuitive tools.",
+      link: "/backgroundChange", // Adding a link for navigation
     },
     {
-      image: CustomizableTemplates,
-      title: "Customizable Templates",
-      text: "Sell packs of customizable templates that users can use for various projects.Such as : Social Media Posts and Marketing Materials",
+      image: imageResize,
+      title: "Resize Images",
+      text: "Quickly resize your image to the perfect dimensions with our easy-to-use tool.",
+      link: "/imageResize", // Adding a link for navigation
     },
   ];
+
+  // Inline styles for headings and descriptions
+  const headingStyle = {
+    color: '#0f16a9', // Heading color
+  };
+
+  const descriptionStyle = {
+    color: '#000002', // Set your desired color here
+  };
+
   return (
     <div className="work-section-wrapper">
       <div className="work-section-top">
         <p className="primary-subheading"></p>
         <h1 className="primary-heading">How It Works</h1>
         <p className="primary-text">
-        Image editing involves manipulating and enhancing digital images using various tools and techniques. This can include adjusting colors, brightness, and contrast, cropping and resizing, removing unwanted elements, and applying filters or effects. Advanced image editing can also involve retouching photos to remove blemishes, combining multiple images, and using AI to automate enhancements and corrections, resulting in professional-quality images.
+          Image editing involves manipulating and enhancing digital images using various tools and techniques. This can include adjusting colors, brightness, and contrast, cropping and resizing, removing unwanted elements, and applying filters or effects. Advanced image editing can also involve retouching photos to remove blemishes, combining multiple images, and using AI to automate enhancements and corrections, resulting in professional-quality images.
         </p>
       </div>
       <div className="work-section-bottom">
         {workInfoData.map((data) => (
           <div className="work-section-info" key={data.title}>
-            <div className="info-boxes-img-container">
-              <img src={data.image} alt="" />
-            </div>
-            <h2>{data.title}</h2>
-            <p>{data.text}</p>
+            <Link to={data.link || "#"} style={{ textDecoration: 'none' }}> {/* Remove underline from Link */}
+              <div className="info-boxes-img-container">
+                <img src={data.image} alt={data.title} />
+              </div>
+              <h2 style={headingStyle}>{data.title}</h2> {/* Inline style for heading */}
+              <p style={descriptionStyle}>{data.text}</p> {/* Inline style for description */}
+            </Link>
           </div>
         ))}
       </div>

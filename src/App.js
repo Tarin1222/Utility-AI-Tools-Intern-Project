@@ -10,8 +10,13 @@ import Footer from "./Components/Footer";
 import SubscribeNow from "./Components/SubscribeNow";
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import "./App.css";
-import PromptGenerator from "./Components/PromptGenerator"; // Ensure this path is correct
+import PromptGenerator from "./Components/PromptGenerator";
 import Signin from "./Components/Signin";
+import ImageResize from "./Components/ImageResize";
+import BackgroundChange from "./Components/BackgroundChange";
+
+
+ // Correctly import imageResize
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -27,9 +32,12 @@ function App() {
           <Route path="/work" element={<Work />} />
           <Route path="/testimonial" element={<Testimonial />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/subscribeNow" element={<SubscribeNow />} /> {/* Ensure the route path matches your component's naming convention */}
-          <Route path="/promptGenerator" element={<PromptGenerator />} /> {/* Ensure the route path matches your component's naming convention */}
-          <Route path="/Signin" element={<Signin />} />
+          <Route path="/subscribeNow" element={<SubscribeNow />} />
+          <Route path="/promptGenerator" element={<PromptGenerator />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/imageResize" element={<ImageResize />} />
+          <Route path="/backgroundChange" element={<BackgroundChange />} />
+
         </Routes>
         <Footer />
       </div>
