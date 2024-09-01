@@ -1,16 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PresetFilterPacks from "../Assets/filter icon.png";
-import backgroundChange from "../Assets/background_change.webp";
+
+import backgroundChange from "../Assets/background_change.webp";  //image editing 
 import imageResize from "../Assets/imageResize.png";
 
 const Work = () => {
   const workInfoData = [
-    {
-      image: PresetFilterPacks,
-      title: "Preset Filter Packs",
-      text: "Offer bundles of preset filters that users can apply to their photos with a single click. such as: AI Retouching , Background Removal and Batch Editing and more",
-    },
+    
     {
       image: backgroundChange,
       title: "Change The Background",
@@ -40,7 +36,7 @@ const Work = () => {
         <p className="primary-subheading"></p>
         <h1 className="primary-heading">How It Works</h1>
         <p className="primary-text">
-          Image editing involves manipulating and enhancing digital images using various tools and techniques. This can include adjusting colors, brightness, and contrast, cropping and resizing, removing unwanted elements, and applying filters or effects. Advanced image editing can also involve retouching photos to remove blemishes, combining multiple images, and using AI to automate enhancements and corrections, resulting in professional-quality images.
+          Image editing involves manipulating and enhancing digital images using various tools and techniques. This can include adjusting backgrounds  and resizing, removing unwanted elements, and applying filters or effects. Advanced image editing can also involve retouching photos to remove blemishes, combining multiple images, and using AI to automate enhancements and corrections, resulting in professional-quality images.
         </p>
       </div>
       <div className="work-section-bottom">

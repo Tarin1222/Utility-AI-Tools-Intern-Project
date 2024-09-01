@@ -21,7 +21,7 @@ const Home = () => {
         </div>
         <div className="home-text-section">
   <h1 className="primary-heading">
-    Transform Your Photos with AI-Powered Editing
+    Transform Your Ideas with AI-Powered Editing Photos
   </h1>
   <p className="primary-text">
     AI-Driven Editors Handle All the Hard Work – From Enhancing and Retouching to Perfecting Your Photos
@@ -98,6 +98,27 @@ const Home = () => {
     
   </div>
 </div>
+<Link 
+  to="/promptGenerator" 
+  style={{ textDecoration: 'none' }} // Removes underline
+>
+  <button 
+    className="secondary-button" 
+    style={{ 
+      backgroundColor: 'black', // Background color
+      color: 'white', // Text color
+      padding: '10px 20px', // Padding
+      border: 'none', // Remove border
+      cursor: 'pointer', // Pointer cursor on hover
+      display: 'block', // Ensures button takes full width of its container
+      margin: '0 auto', // Center the button horizontally
+      textAlign: 'center' // Center text inside the button
+    }}
+  >
+    Make Your Own Images
+  </button>
+</Link>
+
 
 
     </div>
