@@ -1,0 +1,46 @@
+.change-color-container {
+    text-align: center;
+  }
+  
+  .image-container {
+    margin: 20px;
+  }
+  
+  .person-image {
+    width: 300px; /* Adjust as needed */
+  }
+  
+  /* Eye color styles */
+  .eye-brown {
+    filter: hue-rotate(30deg);
+  }
+  
+  .eye-green {
+    filter: hue-rotate(90deg);
+  }
+  
+  .eye-blue {
+    filter: hue-rotate(180deg);
+  }
+  
+  .eye-hazel {
+    filter: hue-rotate(120deg);
+  }
+  
+  /* Hair color styles */
+  .hair-black {
+    filter: brightness(0.4);
+  }
+  
+  .hair-blonde {
+    filter: brightness(1.4);
+  }
+  
+  .hair-brown {
+    filter: sepia(50%);
+  }
+  
+  .hair-red {
+    filter: sepia(100%);
+  }
+  
