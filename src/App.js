@@ -14,6 +14,9 @@ import PromptGenerator from "./Components/PromptGenerator";
 import Signin from "./Components/Signin";
 import ImageResize from "./Components/ImageResize";
 import BackgroundChange from "./Components/BackgroundChange";
+import ChangeColor from "./Components/ChangeColor";
+import AddPayment from "./Components/AddPayment";
+
 
 
  // Correctly import imageResize
@@ -37,6 +40,8 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/imageResize" element={<ImageResize />} />
           <Route path="/backgroundChange" element={<BackgroundChange />} />
+          <Route path="/changeColor" element={<ChangeColor />} />
+          <Route path="/addPayment" element={<AddPayment />} />
 
         </Routes>
         <Footer />

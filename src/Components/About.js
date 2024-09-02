@@ -1,10 +1,10 @@
- //AI TRY OUT 
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import AboutBackgroundImage from "../Assets/tr71123-ai-art.webp";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 
-
-const About = () => {           //AI TRY OUT 
+// AI TRY OUT
+const About = () => {
   return (
     <div className="about-section-container">
       
@@ -23,7 +23,9 @@ const About = () => {           //AI TRY OUT
         Unlock the potential of AI with innovative tools and demos. See how AI can enhance your creativity and projects.
         </p>
         <div className="about-buttons-container">
-          <button className="secondary-button">Explore</button>
+          <Link to="/changeColor" style={{ textDecoration: "none" }}>
+            <button className="secondary-button">Explore</button>
+          </Link>
           <button className="watch-video-button">
             <BsFillPlayCircleFill /> Watch Video
           </button>
