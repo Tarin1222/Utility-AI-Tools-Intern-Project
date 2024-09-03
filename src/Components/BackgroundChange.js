@@ -1,87 +1,110 @@
 import React, { useState } from 'react';
-import images from '../Components/data.json'; // Adjust the path if necessary
-import { backgroundRemoval, dropShadow } from "@cloudinary/url-gen/actions/effect";
-import { scale } from "@cloudinary/url-gen/actions/resize";
-import { Cloudinary } from "@cloudinary/url-gen";
+import './BackgroundChange.css';
 
-// Create a Cloudinary instance and set your cloud name.
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: process.env.REACT_APP_CLOUD_NAME
-  }
-});
+const BackgroundChange = () => {
+  const [backgroundImage, setBackgroundImage] = useState(null);
 
-function BackgroundChange() {
-  const { cars, furniture } = images;
-  const [collection, setCollection] = useState({ title: 'cars', images: cars });
+  const backgrounds = {
+    neonLight: "https://res.cloudinary.com/dzrufky4s/image/upload/v1725339001/background-neon-light_ur2ksp.jpg",
+    brightNeonRoom: "https://res.cloudinary.com/dzrufky4s/image/upload/v1725338922/bright-neon-illuminated-pink-room_fegxoa.jpg",
+    pinkSand: "https://res.cloudinary.com/dzrufky4s/image/upload/v1725338922/pinksand_orig_nfo8ec.jpg",
+    blueWall: "https://res.cloudinary.com/dzrufky4s/image/upload/v1725338922/blue-wall-background_apmkoi.avif",
+    pinkWall: "https://res.cloudinary.com/dzrufky4s/image/upload/v1725338922/pink-wall_ushdr1.avif",
+  };
+
+  const handleBackgroundChange = (event) => {
+    setBackgroundImage(event.target.value);
+  };
+
+  const handleCustomBackground = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setBackgroundImage(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
-    <div className="container">
-      <h2>Background Change & Image Effects</h2>
+    <div className="backgroundChanger">
+      <div className="controlsContainer">
+        <div className="radioButtons">
+          <label>
+            <input
+              type="radio"
+              name="background"
+              value={backgrounds.neonLight}
+              onChange={handleBackgroundChange}
+            />
+            Neon Light
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="background"
+              value={backgrounds.brightNeonRoom}
+              onChange={handleBackgroundChange}
+            />
+            Bright Neon Room
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="background"
+              value={backgrounds.pinkSand}
+              onChange={handleBackgroundChange}
+            />
+            Pink Ocean
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="background"
+              value={backgrounds.blueWall}
+              onChange={handleBackgroundChange}
+            />
+            Day Light
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="background"
+              value={backgrounds.pinkWall}
+              onChange={handleBackgroundChange}
+            />
+            Pink Wall
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="background"
+              value=""
+              onChange={handleBackgroundChange}
+            />
+            Custom Background
+          </label>
+        </div>
 
-      <div className="collection-selector">
-        <ul>
-          <li>
-            <input
-              id="cars"
-              className="sr-only"
-              type="radio"
-              name="collection"
-              value="cars"
-              onChange={() => setCollection({ title: 'cars', images: cars })}
-              checked={collection.title === 'cars'}
-            />
-            <label htmlFor="cars">Cars</label>
-          </li>
-          <li>
-            <input
-              id="furniture"
-              className="sr-only"
-              type="radio"
-              name="collection"
-              value="furniture"
-              onChange={() => setCollection({ title: 'furniture', images: furniture })}
-              checked={collection.title === 'furniture'}
-            />
-            <label htmlFor="furniture">Furniture</label>
-          </li>
-        </ul>
+        <input type="file" id="customBackgroundInput" accept="image/*" onChange={handleCustomBackground} />
       </div>
 
-      <div className="image-gallery">
-        {collection.images.map(({ publicId, width, height }) => {
-          const imageUrl = cld.image(publicId)
-            .effect(backgroundRemoval())
-            .effect(
-              dropShadow()
-                .azimuth(150)
-                .elevation(50)
-                .spread(70)
-            )
-            .resize(scale().width(width).height(height))
-            .format("auto")
-            .quality("auto")
-            .toURL();
-
-          // Log the generated image URL
-          console.log('Generated Image URL:', imageUrl);
-
-          return (
-            <img
-              key={publicId}
-              width={width}
-              height={height}
-              src={imageUrl}
-              alt={`${collection.title} image`}
-              onError={(e) => {
-                e.target.src = "https://via.placeholder.com/150"; // Fallback to a placeholder if the image fails to load
-              }}
-            />
-          );
-        })}
+      <div
+        className="containerChair"
+        style={{
+          backgroundImage: backgroundImage ? `url(${backgroundImage})` : 'none',
+          backgroundSize: 'cover',
+        }}
+      >
+        <img
+          id="mainImage"
+          src="https://res.cloudinary.com/dzrufky4s/image/upload/v1724826729/samples/chair.png"
+          alt="Chair"
+        />
       </div>
     </div>
   );
-}
+};
 
 export default BackgroundChange;
