@@ -20,7 +20,9 @@ const Home = () => {
           <img  alt="" />
         </div>
         <div className="home-text-section">
+          <h1>Utility Tools With AI</h1>
   <h1 className="primary-heading">
+
     Transform Your Ideas with AI-Powered Editing Photos
   </h1>
   <p className="primary-text">

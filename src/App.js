@@ -16,6 +16,10 @@ import ImageResize from "./Components/ImageResize";
 import BackgroundChange from "./Components/BackgroundChange";
 import ChangeColor from "./Components/ChangeColor";
 import AddPayment from "./Components/AddPayment";
+import Admin from "./Components/Admin";
+import AdminPanel from "./Components/AdminPanel";
+import AdminGraph from "./Components/AdminGraph.js";
+import UserList from "./Components/UserList.js";
 
 
 
@@ -42,6 +46,10 @@ function App() {
           <Route path="/backgroundChange" element={<BackgroundChange />} />
           <Route path="/changeColor" element={<ChangeColor />} />
           <Route path="/addPayment" element={<AddPayment />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/adminPanel" element={<AdminPanel />} />
+          <Route path="/adminGraph" element={<AdminGraph />} />
+          <Route path="/userList" element={<UserList />} /> 
 
         </Routes>
         <Footer />
