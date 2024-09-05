@@ -17,7 +17,7 @@ import MonochromePhotosTwoToneIcon from '@mui/icons-material/MonochromePhotosTwo
 import PsychologyIcon from "@mui/icons-material/Psychology";
 import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 import FaceRetouchingNaturalRoundedIcon from '@mui/icons-material/FaceRetouchingNaturalRounded';
-import CircleNotificationsSharpIcon from '@mui/icons-material/CircleNotificationsSharp';
+
 import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 const Navbar = () => {
   const [openMenu, setOpenMenu] = useState(false);
@@ -43,11 +43,7 @@ const Navbar = () => {
       icon: <PhoneRoundedIcon />,
       path: "/testimonial",
     },
-    {
-      text: "Subscribe Now",
-      icon: <CircleNotificationsSharpIcon />,
-      path: "/SubscribeNow",
-    },
+    
     {
       text: "Sign In",
       icon: <LoginRoundedIcon />,
@@ -70,7 +66,7 @@ const Navbar = () => {
         <Link to="/about" className="navbar-link">AI try out</Link>
         <Link to="/work" className="navbar-link11">Image editing</Link>
         <Link to="/testimonial" className="navbar-link11">Contact</Link>
-        <Link to="/SubscribeNow" className="navbar-link11">Subscribe Now</Link>
+        
         <Link to="/Signin" className="navbar-link11">Sign In</Link>
         <Link to="/admin" className="navbar-link11">Admin</Link>
         <Link to="" className="navbar-link">

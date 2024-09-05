@@ -23,9 +23,9 @@ const AddPayment = () => {
         }}
       >
         <div style={{ marginBottom: '20px' }}>
-          <p style={{ fontSize: '25px', fontWeight: '600' }}>Card number</p>
+          <p style={{ fontSize: '25px', fontWeight: '600' }}>For more exciting AI features use our website.</p>
           <p style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)' }}>
-            For Further Use
+            Your Card Details
           </p>
         </div>
 
@@ -33,6 +33,7 @@ const AddPayment = () => {
           style={{
             width: '100%',
             height: '180px',
+            
             padding: '20px',
             backgroundColor: '#0093E9',
             backgroundImage: 'linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)',
