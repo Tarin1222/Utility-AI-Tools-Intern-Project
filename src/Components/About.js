@@ -26,6 +26,10 @@ const About = () => {
           <Link to="/changeColor" style={{ textDecoration: "none" }}>
             <button className="secondary-button">Explore</button>
           </Link>
+          
+          <Link to="/changeDress" style={{ textDecoration: "none" }}>
+            <button className="primary-button">View more</button>
+          </Link>
           <button className="watch-video-button">
             <BsFillPlayCircleFill /> Watch Video
           </button>

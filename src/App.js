@@ -20,6 +20,8 @@ import Admin from "./Components/Admin";
 import AdminPanel from "./Components/AdminPanel";
 import AdminGraph from "./Components/AdminGraph.js";
 import UserList from "./Components/UserList.js";
+import ChangeDress from "./Components/ChangeDress.js";
+import ImageToImageTransform from "./Components/ImageToImageTransform.js";
 
 
 
@@ -50,6 +52,9 @@ function App() {
           <Route path="/adminPanel" element={<AdminPanel />} />
           <Route path="/adminGraph" element={<AdminGraph />} />
           <Route path="/userList" element={<UserList />} /> 
+          <Route path="/changeDress" element={<ChangeDress />} />
+          <Route path="/imageToImageTransform" element={<ImageToImageTransform />} />
+
 
         </Routes>
         <Footer />

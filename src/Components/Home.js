@@ -34,6 +34,7 @@ const Home = () => {
       Open Now <FiArrowRight />
     </button>
   </Link>
+  
 </div>
 
         <div className="home-image-section">
@@ -101,7 +102,7 @@ const Home = () => {
   </div>
 </div>
 <Link 
-  to="/promptGenerator" 
+  to="/imageToImageTransform" 
   style={{ textDecoration: 'none' }} // Removes underline
 >
   <button 
