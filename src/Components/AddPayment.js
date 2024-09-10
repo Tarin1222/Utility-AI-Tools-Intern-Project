@@ -1,200 +1,129 @@
 import React from 'react';
+import './AddPayment.css';
+import Bkash from '../Assets/B-kash.jpg';
+import Nogod from '../Assets/Nogod.jpg';
+import EBL from '../Assets/eastern-bank-limited.jpg';
+import MasterCard from '../Assets/mastercard.png';
+import UCB from '../Assets/UCB.png';
+import BankAsia from '../Assets/BankAsia.webp';
+import ProjectLogo from '../Assets/Logo.jpg'; // Add your project logo
+import SupportIcon from '../Assets/support.png'; // Add support icon
+import FAQIcon from '../Assets/FAQ.png'; // Add FAQ icon
+import OffersIcon from '../Assets/offer.png'; // Add Offers icon
 
 const AddPayment = () => {
+  const banks = [
+    {
+      name: 'Bkash',
+      holder: 'Farzana Islam',
+      number: '1234 5678 1234 5678',
+      expiry: '12/26',
+      logo: Bkash,
+      gradient: 'linear-gradient(160deg, #ff7e5f 0%, #feb47b 100%)',
+    },
+    {
+      name: 'Nogod',
+      holder: 'Farzana Islam',
+      number: '9876 5432 1987 6543',
+      expiry: '11/24',
+      logo: Nogod,
+      gradient: 'linear-gradient(160deg, #00c9ff 0%, #92fe9d 100%)',
+    },
+    {
+      name: 'EBL',
+      holder: 'Farzana Islam',
+      number: '5678 1234 9876 5432',
+      expiry: '10/25',
+      logo: EBL,
+      gradient: 'linear-gradient(160deg, #667eea 0%, #764ba2 100%)',
+    },
+    {
+      name: 'MasterCard',
+      holder: 'Farzana Islam',
+      number: '5432 8765 4321 8765',
+      expiry: '05/23',
+      logo: MasterCard,
+      gradient: 'linear-gradient(160deg, #f953c6 0%, #b91d73 100%)',
+    },
+    {
+      name: 'UCB',
+      holder: 'Farzana Islam',
+      number: '4567 2345 8765 1234',
+      expiry: '01/25',
+      logo: UCB,
+      gradient: 'linear-gradient(160deg, #30cfd0 0%, #330867 100%)',
+    },
+    {
+      name: 'Bank Asia',
+      holder: 'Farzana Islam',
+      number: '9876 5432 1098 7654',
+      expiry: '07/26',
+      logo: BankAsia,
+      gradient: 'linear-gradient(160deg, #0093e9 0%, #80d0c7 100%)',
+    },
+  ];
+
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
-        backgroundColor: '#02031d',
-        padding: '10px 20px',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: '460px',
-          boxShadow: '3px 3px 5px #1b1b1ba2',
-          backgroundColor: '#413f3f',
-          padding: '20px',
-          borderRadius: '8px',
-          color: 'white',
-        }}
-      >
-        <div style={{ marginBottom: '20px' }}>
-          <p style={{ fontSize: '25px', fontWeight: '600' }}>For more exciting AI features use our website.</p>
-          <p style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.7)' }}>
-            Your Card Details
-          </p>
-        </div>
+    <div className="main-container">
+      {/* New Top Section with Project Logo and Icons */}
+      <div className="top-section">
+        <img src={ProjectLogo} alt="Project Logo" className="project-logo" />
 
-        <div
-          style={{
-            width: '100%',
-            height: '180px',
-            
-            padding: '20px',
-            backgroundColor: '#0093E9',
-            backgroundImage: 'linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)',
-            position: 'relative',
-            borderRadius: '5px',
-            boxShadow: '3px 3px 5px #0000001a',
-            transition: 'all 0.3s ease-in',
-            cursor: 'pointer',
-            marginBottom: '20px',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-            <label style={{ display: 'block' }}>
-              <div style={{ display: 'flex', position: 'relative' }}>
-                <div>
-                  <img
-                    src="https://www.freepnglogos.com/uploads/visa-inc-logo-png-11.png"
-                    alt=""
-                    style={{ width: '50px', height: '20px', objectFit: 'fill' }}
-                  />
-                  <p style={{ marginTop: '10px', marginBottom: '15px', fontWeight: 'bold' }}>Farzana Islam</p>
-                </div>
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '6px',
-                    right: '0',
-                  }}
-                >
-                  <input
-                    type="radio"
-                    name="card"
-                    id="check"
-                    style={{
-                      appearance: 'none',
-                      width: '20px',
-                      height: '20px',
-                      backgroundColor: '#eee',
-                      position: 'relative',
-                      borderRadius: '3px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      outline: 'none',
-                    }}
-                    onChange={() => {}}
-                  />
-                </div>
-              </div>
-            </label>
-            <div
-              style={{
-                marginTop: 'auto',
-                fontWeight: 'bold',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}
-            >
-              <p style={{ margin: '0' }}>4989 1237 1234 4532</p>
-              <p style={{ margin: '0' }}>01/24</p>
-            </div>
+        <div className="info-icons">
+          <div className="info-icon">
+            <img src={SupportIcon} alt="Support" />
+            <p>Support</p>
+          </div>
+          <div className="info-icon">
+            <img src={FAQIcon} alt="FAQ" />
+            <p>FAQ</p>
+          </div>
+          <div className="info-icon">
+            <img src={OffersIcon} alt="Offers" />
+            <p>Offers</p>
           </div>
         </div>
+      </div>
 
-        <div
-          style={{
-            width: '100%',
-            height: '180px',
-            padding: '20px',
-            backgroundColor: '#21D4FD',
-            backgroundImage: 'linear-gradient(116deg, #21D4FD 0%, #B721FF 100%)',
-            position: 'relative',
-            borderRadius: '5px',
-            boxShadow: '3px 3px 5px #0000001a',
-            transition: 'all 0.3s ease-in',
-            cursor: 'pointer',
-            marginBottom: '20px',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-            <label style={{ display: 'block' }}>
-              <div style={{ display: 'flex', position: 'relative' }}>
-                <div>
-                  <img
-                    src="https://www.freepnglogos.com/uploads/mastercard-png/mastercard-logo-png-transparent-svg-vector-bie-supply-0.png"
-                    alt="master"
-                    style={{ width: '50px', height: '50px', objectFit: 'fill' }}
-                  />
-                  <p style={{ fontWeight: 'bold' }}>Farzana Islam</p>
-                </div>
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '6px',
-                    right: '0',
-                  }}
-                >
-                  <input
-                    type="radio"
-                    name="card"
-                    id="check"
-                    style={{
-                      appearance: 'none',
-                      width: '20px',
-                      height: '20px',
-                      backgroundColor: '#eee',
-                      position: 'relative',
-                      borderRadius: '3px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      outline: 'none',
-                    }}
-                    onChange={() => {}}
-                  />
+      {/* Add a border below the top section */}
+      <hr className="separator-line" />
+
+      {/* Bank Cards Section */}
+      <div className="payment-container">
+        {banks.map((bank, index) => (
+          <div key={index} className="payment-card">
+            <div
+              className="card-details"
+              style={{ backgroundImage: bank.gradient }}
+            >
+              <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+                <label>
+                  <div style={{ display: 'flex', position: 'relative' }}>
+                    <div>
+                      <img src={bank.logo} alt={bank.name} className="bank-logo" />
+                      <p className="card-holder">{bank.holder}</p>
+                    </div>
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '6px',
+                        right: '0',
+                      }}
+                    >
+                      <input type="radio" name="card" className="radio-button" onChange={() => {}} />
+                    </div>
+                  </div>
+                </label>
+                <div className="card-footer">
+                  <p>{bank.number}</p>
+                  <p>{bank.expiry}</p>
                 </div>
               </div>
-            </label>
-            <div
-              style={{
-                marginTop: 'auto',
-                fontWeight: 'bold',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-              }}
-            >
-              <p style={{ margin: '0' }}>5540 2345 3453 2343</p>
-              <p style={{ margin: '0' }}>05/23</p>
             </div>
           </div>
-        </div>
+        ))}
 
-        <div
-          style={{
-            width: '100%',
-            height: '50px',
-            border: '1px solid #0093E9',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            color: '#0093E9',
-            transition: 'all 0.5s ease',
-            fontWeight: '500',
-            cursor: 'pointer',
-          }}
-          onClick={() => {
-            // Handle click event
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = '#0093E9';
-            e.target.style.color = '#fff';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = 'transparent';
-            e.target.style.color = '#0093E9';
-          }}
-        >
+        <div className="book-now" onClick={() => {}}>
           Book Now
         </div>
       </div>
