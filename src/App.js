@@ -21,11 +21,12 @@ import AdminPanel from "./Components/AdminPanel";
 import AdminGraph from "./Components/AdminGraph.js";
 import UserList from "./Components/UserList.js";
 import ChangeDress from "./Components/ChangeDress.js";
-import ImageToImageTransform from "./Components/ImageToImageTransform.js";
+import ImageToImageTransform from "./Components/ImageToImageTransform.js"; 
+import PaymentList from "./Components/Adminpaymentlist.js"; // Ensure correct name here
+import Settings from "./Components/Adminsettings.js"; // Ensure correct name here
+import ServiceManagement from "./Components/AdminServiceManagement.js"; // Ensure correct name here
+import TeamManagement from "./Components/AdminTeamManagement.js"; // Ensure correct name here
 
-
-
- // Correctly import imageResize
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -54,8 +55,12 @@ function App() {
           <Route path="/userList" element={<UserList />} /> 
           <Route path="/changeDress" element={<ChangeDress />} />
           <Route path="/imageToImageTransform" element={<ImageToImageTransform />} />
-
-
+          
+          {/* Corrected route names */}
+          <Route path="/paymentList" element={<PaymentList />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/serviceManagement" element={<ServiceManagement />} />
+          <Route path="/teamManagement" element={<TeamManagement />} />
         </Routes>
         <Footer />
       </div>

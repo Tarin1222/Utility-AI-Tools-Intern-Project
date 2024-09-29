@@ -47,7 +47,7 @@ const ImageResize = () => {
           value={resizeWidth}
           onChange={handleResizeWidthChange}
           min="10"
-          max="1000"
+          max="10000"
           placeholder="Width"
           className="resize-width-input"
         />
