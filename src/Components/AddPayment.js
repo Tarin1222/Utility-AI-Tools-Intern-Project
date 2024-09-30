@@ -1,6 +1,7 @@
 import React from 'react';
 import './AddPayment.css';
-import Bkash from '../Assets/B-kash.jpg';
+import { useNavigate } from 'react-router-dom'; // Import the useNavigate hook
+import BkashImage from '../Assets/B-kash.jpg'; // Renamed to BkashImage to avoid conflict
 import Nogod from '../Assets/Nogod.jpg';
 import EBL from '../Assets/eastern-bank-limited.jpg';
 import MasterCard from '../Assets/mastercard.png';
@@ -12,14 +13,17 @@ import FAQIcon from '../Assets/FAQ.png'; // Add FAQ icon
 import OffersIcon from '../Assets/offer.png'; // Add Offers icon
 
 const AddPayment = () => {
+  const navigate = useNavigate(); // Hook for programmatic navigation
+
   const banks = [
     {
       name: 'Bkash',
       holder: 'Farzana Islam',
       number: '1234 5678 1234 5678',
       expiry: '12/26',
-      logo: Bkash,
+      logo: BkashImage, // Updated to use the renamed image import
       gradient: 'linear-gradient(160deg, #ff7e5f 0%, #feb47b 100%)',
+      navigateTo: '/bkash', // Define the route for this card
     },
     {
       name: 'Nogod',
@@ -63,6 +67,12 @@ const AddPayment = () => {
     },
   ];
 
+  const handleCardClick = (bank) => {
+    if (bank.navigateTo) {
+      navigate(bank.navigateTo); // Navigate to the specified route
+    }
+  };
+
   return (
     <div className="main-container">
       {/* New Top Section with Project Logo and Icons */}
@@ -91,7 +101,11 @@ const AddPayment = () => {
       {/* Bank Cards Section */}
       <div className="payment-container">
         {banks.map((bank, index) => (
-          <div key={index} className="payment-card">
+          <div
+            key={index}
+            className="payment-card"
+            onClick={() => handleCardClick(bank)} // Handle card click
+          >
             <div
               className="card-details"
               style={{ backgroundImage: bank.gradient }}

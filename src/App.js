@@ -27,6 +27,8 @@ import Settings from "./Components/Adminsettings.js"; // Ensure correct name her
 import ServiceManagement from "./Components/AdminServiceManagement.js"; // Ensure correct name here
 import TeamManagement from "./Components/AdminTeamManagement.js"; // Ensure correct name here
 
+import Bkash from "./Components/Bkash.js";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -55,6 +57,7 @@ function App() {
           <Route path="/userList" element={<UserList />} /> 
           <Route path="/changeDress" element={<ChangeDress />} />
           <Route path="/imageToImageTransform" element={<ImageToImageTransform />} />
+          <Route path="/bkash" element={<Bkash />} />
           
           {/* Corrected route names */}
           <Route path="/paymentList" element={<PaymentList />} />
