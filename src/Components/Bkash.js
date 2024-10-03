@@ -245,7 +245,7 @@ const Bkash = () => {
               <span className="far fa-calendar-alt text">
                 <span className="ps-2">Next payment:</span>
               </span>
-              <span className="ps-3">22 July, 2018</span>
+              <span className="ps-3">22 December, 2025</span>
             </div>
             <div className="d-flex align-items-center justify-content-between text mt-5">
               <div className="d-flex flex-column text">
@@ -357,7 +357,7 @@ const Bkash = () => {
                     <input
                       className="form-control text-uppercase"
                       type="text"
-                      value="valdimir berezovkiy"
+                      value="Farzana Islam"
                     />
                     <span className="far fa-user"></span>
                   </div>

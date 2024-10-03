@@ -26,8 +26,14 @@ import PaymentList from "./Components/Adminpaymentlist.js"; // Ensure correct na
 import Settings from "./Components/Adminsettings.js"; // Ensure correct name here
 import ServiceManagement from "./Components/AdminServiceManagement.js"; // Ensure correct name here
 import TeamManagement from "./Components/AdminTeamManagement.js"; // Ensure correct name here
+import TextToImageActivity from "./Components/TextToImageActivity.js"; 
+
+
+
 
 import Bkash from "./Components/Bkash.js";
+import convertToBase64 from "./Components/convertToBase64.js";
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
@@ -58,12 +64,16 @@ function App() {
           <Route path="/changeDress" element={<ChangeDress />} />
           <Route path="/imageToImageTransform" element={<ImageToImageTransform />} />
           <Route path="/bkash" element={<Bkash />} />
-          
+          <Route path="/convertToBase64" element={<convertToBase64 />} />
+
+
+
           {/* Corrected route names */}
           <Route path="/paymentList" element={<PaymentList />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/serviceManagement" element={<ServiceManagement />} />
           <Route path="/teamManagement" element={<TeamManagement />} />
+          <Route path="/textToImageActivity" element={<TextToImageActivity />} />
         </Routes>
         <Footer />
       </div>

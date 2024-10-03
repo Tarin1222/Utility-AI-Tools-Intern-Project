@@ -23,7 +23,7 @@ const AddPayment = () => {
       expiry: '12/26',
       logo: BkashImage, // Updated to use the renamed image import
       gradient: 'linear-gradient(160deg, #ff7e5f 0%, #feb47b 100%)',
-      navigateTo: '/bkash', // Define the route for this card
+     
     },
     {
       name: 'Nogod',
@@ -48,6 +48,7 @@ const AddPayment = () => {
       expiry: '05/23',
       logo: MasterCard,
       gradient: 'linear-gradient(160deg, #f953c6 0%, #b91d73 100%)',
+      navigateTo: '/bkash', // Define the route for this card
     },
     {
       name: 'UCB',

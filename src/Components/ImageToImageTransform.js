@@ -1,69 +1,88 @@
 import React, { useState } from 'react';
+import convertToBase64 from './convertToBase64'; // Make sure the path is correct
 
 const ImageToImageTransform = () => {
-  const [uploadedImage, setUploadedImage] = useState(null);
-  const [similarImages, setSimilarImages] = useState([]);
+  const [image, setImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Dummy AI-generated similar images
-  const aiGeneratedImages = [
-    "https://res.cloudinary.com/dzrufky4s/image/upload/v1725716289/4_ajke5g.png",
-    "https://res.cloudinary.com/dzrufky4s/image/upload/v1725716291/1_kvkqgs.png",
-    "https://res.cloudinary.com/dzrufky4s/image/upload/v1725716292/5_zmaewg.png",
-    "https://res.cloudinary.com/dzrufky4s/image/upload/v1725716302/3_xhb5mb.png",
-  ];
+  const handleTransformImage = async () => {
+    setIsLoading(true);
+    setError(null);
 
-  // Handle image upload
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setUploadedImage(reader.result); // Set uploaded image URL
-        // Simulate fetching similar images after upload
-        fetchSimilarImages();
-      };
-      reader.readAsDataURL(file);
+    const url = 'https://modelslab.com/api/v6/images/img2img';
+    const apiKey = '5MqpLpSJY3vBIPyWYQKZTzSlG9TF7JeZZeclqQT8jKYt7lHjkKQLr7HwCvox';  // Replace with your actual API key
+
+    const initImage = "https://i.pinimg.com/736x/20/ab/3d/20ab3df5c180e1cae812020bcfeb3093.jpg";
+    
+    // Convert the image URL to Base64 (only if needed)
+    const base64Image = await convertToBase64(initImage);
+
+    const requestData = {
+      key: apiKey,
+      model_id: "realistic-vision-51",
+      prompt: "Butterflies and rose and water lilly",
+      negative_prompt:  "((out of frame)), ((extra fingers)), ((extra legs)) .((women)), ((nudity)), ((vulger))",
+      init_image: base64Image, // Pass the base64 image here
+      samples: "1",
+      num_inference_steps: "31",
+      safety_checker: "yes",
+      enhance_prompt: "yes",
+      guidance_scale: 7.5,
+      strength: 0.7,
+      scheduler: "UniPCMultistepScheduler",
+      seed: null,
+      lora_model: null,
+      tomesd: "yes",
+      use_karras_sigmas: "yes",
+      vae: null,
+      lora_strength: null,
+      embeddings_model: null,
+      webhook: null,
+      track_id: null
+    };
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Error fetching the image transformation');
+      }
+
+      const result = await response.json();
+
+      if (result.status === 'success' && result.output && result.output.length > 0) {
+        setImage(result.output[0]);  // Set the transformed image URL
+      } else {
+        throw new Error('No image generated');
+      }
+
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  // Simulate fetching similar images (replace with real API call)
-  const fetchSimilarImages = () => {
-    setSimilarImages(aiGeneratedImages); // Simulated AI transformation
-  };
-
   return (
-    <div style={{ textAlign: 'center' }}>
-      <h2>Image-to-Image Transformation</h2>
+    <div>
+      <h1>Image to Image Transformation</h1>
+      <button onClick={handleTransformImage} disabled={isLoading}>
+        {isLoading ? 'Transforming...' : 'Transform Image'}
+      </button>
 
-      {/* Image Upload */}
-      <input 
-        type="file" 
-        accept="image/*" 
-        onChange={handleImageUpload} 
-        style={{ marginBottom: '20px', padding: '10px' }}
-      />
+      {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      {/* Show uploaded image */}
-      {uploadedImage && (
+      {image && (
         <div>
-          <h3>Uploaded Image:</h3>
-          <img 
-            src={uploadedImage} 
-            alt="Uploaded" 
-            style={{ width: '300px', height: '400px', marginBottom: '20px' }} 
-          />
-        </div>
-      )}
-
-      {/* Show AI-generated similar images */}
-      {similarImages.length > 0 && (
-        <div>
-          <h3>Similar Images:</h3>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', flexWrap: 'wrap' }}>
-            {similarImages.map((img, index) => (
-              <img key={index} src={img} alt={`Similar ${index}`} style={{ width: '150px', height: '200px' }} />
-            ))}
-          </div>
+          <h2>Transformed Image</h2>
+          <img src={image} alt="Transformed" style={{ maxWidth: '100%', height: 'auto' }} />
         </div>
       )}
     </div>

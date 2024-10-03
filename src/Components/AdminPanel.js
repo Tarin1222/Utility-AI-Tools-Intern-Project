@@ -6,6 +6,7 @@ import service from '../Assets/Service-Management-1.jpg';
 import team from '../Assets/team-mms.jpg';
 import settings from '../Assets/settings.png';
 import payment from '../Assets/payment.png';
+import activity from '../Assets/activity.webp';
 
 const AdminPanel = () => {
   const navigate = useNavigate();
@@ -22,7 +23,8 @@ const AdminPanel = () => {
     { id: 3, title: 'Payment List', image: payment, route: '/paymentList' },
     { id: 4, title: 'Settings', image: settings, route: '/settings' },
     { id: 5, title: 'Team Management', image: team, route: '/teamManagement' },
-    { id: 6, title: 'Service Management', image: service, route: '/serviceManagement' },
+    { id: 6, title: 'Text to Image Activity', image: activity, route: '/textToImageActivity' },
+    { id: 7, title: 'Service Management', image: service, route: '/serviceManagement' },
   ];
 
   return (
