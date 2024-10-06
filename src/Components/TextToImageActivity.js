@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './TextToImageActivity.css'; // Create a CSS file for styling
+import './TextToImageActivity.css'; // Custom CSS file for styling
+import Papa from 'papaparse'; // For CSV generation (optional)
 
 const TextToImageActivity = () => {
   const [promptText, setPromptText] = useState('');
@@ -24,7 +25,7 @@ const TextToImageActivity = () => {
       webhook: null,
       track_id: null
     };
-
+  
     if (promptText) {
       try {
         const response = await fetch('https://modelslab.com/api/v3/text2img', {
@@ -34,25 +35,35 @@ const TextToImageActivity = () => {
           },
           body: JSON.stringify(prompt)
         });
-
+  
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-
+  
         const data = await response.json();
-
+  
         if (data.status === 'failed') {
           console.error('Generation failed:', data.message || 'Unknown error');
           setResult([`Generation failed: ${data.message || 'Unknown error'}`]);
           return;
         }
-
+  
         setResult(data.output);
-
-        // Save the prompt and current date/time to history
+  
+        // Save the prompt, samples, and current date/time to history
         const dateTime = new Date().toLocaleString(); // Get current date/time
-        setPromptHistory([...promptHistory, { prompt: promptText, dateTime }]); // Update history
-
+        const newEntry = { prompt: promptText, samples, dateTime }; // New history entry with samples
+        setPromptHistory([...promptHistory, newEntry]); // Update history
+  
+        // **Send the new entry to the server**
+        await fetch('/api/savePrompt', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newEntry),
+        });
+  
       } catch (error) {
         console.error('Error:', error);
         setResult(['Error generating image. Please try again.']);
@@ -60,6 +71,27 @@ const TextToImageActivity = () => {
     } else {
       alert('Please enter a prompt.');
     }
+  };
+  
+  // Function to convert prompt history to CSV and trigger download
+  const downloadCSV = () => {
+    if (promptHistory.length === 0) {
+      alert('No history available to download.');
+      return;
+    }
+
+    // Using papaparse (optional)
+    const csv = Papa.unparse(promptHistory);
+
+    // Create a Blob from the CSV string and trigger download
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', 'prompt-history.csv');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   // Function to copy text to clipboard
@@ -113,6 +145,7 @@ const TextToImageActivity = () => {
           <thead>
             <tr>
               <th>Prompt</th>
+              <th>Samples</th> {/* New column for samples */}
               <th>Date & Time</th>
               <th>Copy</th> {/* New column for copy functionality */}
             </tr>
@@ -121,6 +154,7 @@ const TextToImageActivity = () => {
             {promptHistory.map((entry, index) => (
               <tr key={index}>
                 <td>{entry.prompt}</td>
+                <td>{entry.samples}</td> {/* Display number of samples */}
                 <td>{entry.dateTime}</td>
                 <td>
                   <button
@@ -134,6 +168,10 @@ const TextToImageActivity = () => {
             ))}
           </tbody>
         </table>
+        {/* Button to download CSV */}
+        <button onClick={downloadCSV} className="download-button">
+          Download CSV
+        </button>
       </div>
     </div>
   );
