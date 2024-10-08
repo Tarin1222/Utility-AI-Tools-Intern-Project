@@ -131,7 +131,10 @@ const TextToImageActivity = () => {
       <div className="result">
         {Array.isArray(result) ? (
           result.map((imageUrl, index) => (
-            <img key={index} src={imageUrl} alt={`Generated ${index + 1}`} />
+            <div key={index}>
+              <img src={imageUrl} alt={`Generated ${index + 1}`} />
+              <p>{imageUrl}</p> {/* Display the image URL below the image */}
+            </div>
           ))
         ) : (
           <p>{result}</p>
@@ -145,7 +148,8 @@ const TextToImageActivity = () => {
           <thead>
             <tr>
               <th>Prompt</th>
-              <th>Samples</th> {/* New column for samples */}
+
+              <th>Samples</th>
               <th>Date & Time</th>
               <th>Copy</th> {/* New column for copy functionality */}
             </tr>

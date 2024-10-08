@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import convertToBase64 from './convertToBase64'; // Make sure the path is correct
+
 
 const ImageToImageTransform = () => {
   const [image, setImage] = useState(null);
@@ -13,17 +13,12 @@ const ImageToImageTransform = () => {
     const url = 'https://modelslab.com/api/v6/images/img2img';
     const apiKey = '5MqpLpSJY3vBIPyWYQKZTzSlG9TF7JeZZeclqQT8jKYt7lHjkKQLr7HwCvox';  // Replace with your actual API key
 
-    const initImage = "https://i.pinimg.com/736x/20/ab/3d/20ab3df5c180e1cae812020bcfeb3093.jpg";
-    
-    // Convert the image URL to Base64 (only if needed)
-    const base64Image = await convertToBase64(initImage);
-
     const requestData = {
       key: apiKey,
       model_id: "realistic-vision-51",
-      prompt: "Butterflies and rose and water lilly",
+      prompt: "Gold , Diamond , Emerald and Rubby",
       negative_prompt:  "((out of frame)), ((extra fingers)), ((extra legs)) .((women)), ((nudity)), ((vulger))",
-      init_image: base64Image, // Pass the base64 image here
+      init_image: "https://i.pinimg.com/736x/20/ab/3d/20ab3df5c180e1cae812020bcfeb3093.jpg",
       samples: "1",
       num_inference_steps: "31",
       safety_checker: "yes",
@@ -71,7 +66,7 @@ const ImageToImageTransform = () => {
   };
 
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       <h1>Image to Image Transformation</h1>
       <button onClick={handleTransformImage} disabled={isLoading}>
         {isLoading ? 'Transforming...' : 'Transform Image'}
@@ -85,6 +80,9 @@ const ImageToImageTransform = () => {
           <img src={image} alt="Transformed" style={{ maxWidth: '100%', height: 'auto' }} />
         </div>
       )}
+
+      {/* Tennis image positioned at the right corner */}
+      
     </div>
   );
 };
