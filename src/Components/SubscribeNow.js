@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Robot from '../Assets/robot.avif'; // Adjust the path as necessary
+import Robot from '../Assets/robot.avif'; // adjust path
 
 const SubscribeNow = () => {
   const [formData, setFormData] = useState({
@@ -13,10 +13,7 @@ const SubscribeNow = () => {
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [id]: value
-    }));
+    setFormData(prev => ({ ...prev, [id]: value }));
   };
 
   const handleSubmit = async (e) => {
@@ -29,17 +26,27 @@ const SubscribeNow = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3000/submitForm", {
+      const response = await axios.post("http://localhost:5000/subscribenow", {
         fullName,
         email,
         password,
         repeatPassword
       });
+
       console.log(response.data);
-      alert(response.data.message);  // Show success message
+      alert(response.data.message);
+
+      // clear form
+      setFormData({
+        fullName: '',
+        email: '',
+        password: '',
+        repeatPassword: '',
+        agreeTerms: false
+      });
     } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("Error submitting form");
+      console.error("Error submitting form:", error.response || error.message);
+      alert(error.response?.data?.message || "Error submitting form");
     }
   };
 
@@ -48,36 +55,74 @@ const SubscribeNow = () => {
       <div className="container h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
-            <div className="card text-black subscribe-card" style={{ backgroundImage: `url(${Robot})`, backgroundSize: 'contain', backgroundPosition: 'cover', backgroundRepeat: 'no-repeat' }}>
+            <div
+              className="card text-black subscribe-card"
+              style={{
+                backgroundImage: `url(${Robot})`,
+                backgroundSize: 'contain',
+                backgroundPosition: 'cover',
+                backgroundRepeat: 'no-repeat'
+              }}
+            >
               <div className="card-body p-md-5">
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-8">
-                    <p className="text-center ">Sign up</p>
+                    <p className="text-center">Sign up</p>
                     <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                       <div className="row mb-4">
                         <div className="col">
                           <label htmlFor="fullName" className="form-label">Full Name</label>
-                          <input type="text" id="fullName" className="form-control subscribe-input" onChange={handleChange} />
+                          <input
+                            type="text"
+                            id="fullName"
+                            className="form-control subscribe-input"
+                            value={formData.fullName}
+                            onChange={handleChange}
+                          />
                         </div>
                         <div className="col">
                           <label htmlFor="email" className="form-label">Email</label>
-                          <input type="email" id="email" className="form-control subscribe-input" onChange={handleChange} />
+                          <input
+                            type="email"
+                            id="email"
+                            className="form-control subscribe-input"
+                            value={formData.email}
+                            onChange={handleChange}
+                          />
                         </div>
                       </div>
 
                       <div className="row mb-4">
                         <div className="col">
                           <label htmlFor="password" className="form-label">Password</label>
-                          <input type="password" id="password" className="form-control subscribe-input" onChange={handleChange} />
+                          <input
+                            type="password"
+                            id="password"
+                            className="form-control subscribe-input"
+                            value={formData.password}
+                            onChange={handleChange}
+                          />
                         </div>
                         <div className="col">
                           <label htmlFor="repeatPassword" className="form-label">Repeat Password</label>
-                          <input type="password" id="repeatPassword" className="form-control subscribe-input" onChange={handleChange} />
+                          <input
+                            type="password"
+                            id="repeatPassword"
+                            className="form-control subscribe-input"
+                            value={formData.repeatPassword}
+                            onChange={handleChange}
+                          />
                         </div>
                       </div>
 
                       <div className="form-check mb-4">
-                        <input className="form-check-input" type="checkbox" id="agreeTerms" checked={formData.agreeTerms} onChange={() => setFormData(prevState => ({ ...prevState, agreeTerms: !formData.agreeTerms }))} />
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          id="agreeTerms"
+                          checked={formData.agreeTerms}
+                          onChange={() => setFormData(prev => ({ ...prev, agreeTerms: !prev.agreeTerms }))}
+                        />
                         <label className="form-check-label" htmlFor="agreeTerms">
                           I agree all statements in <a href="/Terms of service.pdf" target="_blank" rel="noopener noreferrer">Terms of service</a>
                         </label>

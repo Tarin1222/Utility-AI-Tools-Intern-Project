@@ -16,7 +16,7 @@ const ImageToImageTransform = () => {
     const requestData = {
       key: apiKey,
       model_id: "realistic-vision-51",
-      prompt: "Gold , Diamond , Emerald and Rubby",
+      prompt: "Fairy, wings, long gown , high neck dress, covered chest",
       negative_prompt:  "((out of frame)), ((extra fingers)), ((extra legs)) .((women)), ((nudity)), ((vulger))",
       init_image: "https://i.pinimg.com/736x/20/ab/3d/20ab3df5c180e1cae812020bcfeb3093.jpg",
       samples: "1",

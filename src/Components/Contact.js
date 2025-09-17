@@ -9,14 +9,16 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/submitForm", {
+      const response = await axios.post("http://localhost:5000/contact", {
         email,
         message,
       });
       console.log(response.data);
       alert("Form submitted successfully!");
+      setEmail("");    // clear email field
+      setMessage("");  // clear message field
     } catch (error) {
-      console.error("Error submitting form:", error);
+      console.error("Error submitting form:", error.response || error.message);
       alert("Error submitting form");
     }
   };
@@ -27,11 +29,9 @@ const Contact = () => {
       <h1 className="primary-heading">Let Us Help You</h1>
       <form className="contact-form-container" onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label htmlFor="exampleFormControlInput1" className="form-label"></label>
           <input
             type="email"
             className="form-control"
-            id="exampleFormControlInput1"
             placeholder="yourmail@gmail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -39,10 +39,8 @@ const Contact = () => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleFormControlTextarea1" className="form-label"></label>
           <textarea
             className="form-control"
-            id="exampleFormControlTextarea1"
             placeholder="Your Message"
             rows="3"
             value={message}
